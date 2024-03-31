@@ -4,6 +4,7 @@ package com.example.weatherapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.android.volley.Request
 
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getResult("London")
+        requestWeatherData("London")
         days_hours_btns()
     }
     private fun days_hours_btns(){
@@ -35,34 +36,41 @@ class MainActivity : AppCompatActivity() {
 
 
     }
-    private fun getResult(city: String){
-        val url = "https://api.weatherapi.com/v1/current.json" +
-                "?key=$API_KEY&q=$city&aqi=no"
+
+    private fun requestWeatherData(city: String){
+        val url = "https://api.weatherapi.com/v1/forecast.json?key=" +
+                API_KEY +
+                "&q=" +
+                city +
+                "&days=" +
+                "3" +
+                "&aqi=no&alerts=no"
         val queue = Volley.newRequestQueue(this)
-        val stringRequest = StringRequest(com.android.volley.Request.Method.GET,
+        val request = StringRequest(
+            Request.Method.GET,
             url,
-            {               // Для получения ответных данных использую функцию parseWeatherData(result: String)
-                result -> parseWeatherData(result)
+            {
+                    result -> parseWeatherData(result)
             },
             {
-              error -> Log.d("MyLog", "Error: $error")
+                    error -> Log.d("MyLog", "Error: $error")
             }
         )
-        queue.add(stringRequest)
+        queue.add(request)
     }
-    private fun parseWeatherData(result: String){
+
+    private fun parseWeatherData(result: String) {
         val mainObject = JSONObject(result)
         val list = parseDays(mainObject)
-        // list[0] - это значит сегодняшний день
         parseCurrentData(mainObject, list[0])
     }
 
-    private fun parseDays(mainObject: JSONObject):List<WeatherModel> {
+    private fun parseDays(mainObject: JSONObject): List<WeatherModel>{
         val list = ArrayList<WeatherModel>()
         val daysArray = mainObject.getJSONObject("forecast")
-            .getJSONArray("forecast")
-        val name = mainObject.getJSONObject("location").getString("name")
-        for (i in 0 until daysArray.length()) {
+            .getJSONArray("forecastday")
+        val name =  mainObject.getJSONObject("location").getString("name")
+        for (i in 0 until daysArray.length()){
             val day = daysArray[i] as JSONObject
             val item = WeatherModel(
                 name,
@@ -74,7 +82,6 @@ class MainActivity : AppCompatActivity() {
                 day.getJSONObject("day").getString("mintemp_c"),
                 day.getJSONObject("day").getJSONObject("condition")
                     .getString("icon"),
-                // Информацию по часам просто записали строкой
                 day.getJSONArray("hour").toString()
             )
             list.add(item)
@@ -82,22 +89,24 @@ class MainActivity : AppCompatActivity() {
         return list
     }
 
-    private fun parseCurrentData(mainObject: JSONObject, weatherItem:WeatherModel){
+    private fun parseCurrentData(mainObject: JSONObject, weatherItem: WeatherModel){
         val item = WeatherModel(
             mainObject.getJSONObject("location").getString("name"),
             mainObject.getJSONObject("current").getString("last_updated"),
-            mainObject.getJSONObject("current").getJSONObject("condition").getString("text"),
+            mainObject.getJSONObject("current")
+                .getJSONObject("condition").getString("text"),
             mainObject.getJSONObject("current").getString("temp_c"),
             weatherItem.maxTemp,
             weatherItem.minTemp,
-            mainObject.getJSONObject("current").getJSONObject("condition").getString("icon"),
+            mainObject.getJSONObject("current")
+                .getJSONObject("condition").getString("icon"),
             weatherItem.hours
         )
         Log.d("MyLog", "MaxTemp: ${item.maxTemp}")
         Log.d("MyLog", "MinTemp: ${item.minTemp}")
         Log.d("MyLog", "Hours: ${item.hours}")
-
     }
+
 }
 
 
