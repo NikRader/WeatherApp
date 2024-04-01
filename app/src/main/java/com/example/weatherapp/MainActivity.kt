@@ -16,12 +16,30 @@ import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        days_hours_btn()
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.back, MainFragment.newInstance())
+            .replace(R.id.placeCurrentCard, MainFragment.newInstance())
             .commit()
+    }
+    private fun days_hours_btn() = with(binding){
+        hoursBtn.setOnClickListener {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.placeForecast, HoursFragment.newInstance())
+                .commit()
+        }
+        daysBtn.setOnClickListener {
+            supportFragmentManager
+                .beginTransaction()
+                .replace(R.id.placeForecast, DaysFragment.newInstance())
+                .commit()
+        }
     }
 }

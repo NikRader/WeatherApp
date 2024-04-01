@@ -22,10 +22,7 @@ import org.json.JSONObject
 const val API_KEY = "b493d3eeff724b3f9a954927242303"
 
 class MainFragment : Fragment()  {
-    private val fList = listOf<Fragment>(
-        HoursFragment.newInstance(),
-        DaysFragment.newInstance()
-    )
+
     private lateinit var binding: FragmentMainBinding
     private val model: MainViewModel by activityViewModels()
 
@@ -40,20 +37,12 @@ class MainFragment : Fragment()  {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        days_hours_btns()
         updateCurrentCard()
         requestWeatherData("Rome")
 
     }
 
-    private fun days_hours_btns() = with(binding){
-        hoursBtn.setOnClickListener {
 
-        }
-        daysBtn.setOnClickListener {
-
-        }
-    }
 
     private fun requestWeatherData(city: String){
         val url = "https://api.weatherapi.com/v1/forecast.json?key=" +
