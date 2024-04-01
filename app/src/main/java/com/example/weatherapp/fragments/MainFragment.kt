@@ -5,35 +5,54 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.ActivityResultLauncher
+
 import androidx.fragment.app.activityViewModels
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.weatherapp.MainViewModel
+import com.example.weatherapp.R
 import com.example.weatherapp.WeatherModel
+
 import com.example.weatherapp.databinding.FragmentMainBinding
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
 
+
 const val API_KEY = "b493d3eeff724b3f9a954927242303"
 
-class MainFragment : Fragment() {
-
+class MainFragment : Fragment()  {
+    private val fList = listOf<Fragment>(
+        HoursFragment.newInstance(),
+        DaysFragment.newInstance()
+    )
     private lateinit var binding: FragmentMainBinding
     private val model: MainViewModel by activityViewModels()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        days_hours_btns()
         updateCurrentCard()
         requestWeatherData("Rome")
+
+    }
+
+    private fun days_hours_btns() = with(binding){
+        hoursBtn.setOnClickListener {
+
+        }
+        daysBtn.setOnClickListener {
+
+        }
     }
 
     private fun requestWeatherData(city: String){
@@ -101,11 +120,9 @@ class MainFragment : Fragment() {
                 .getJSONObject("condition").getString("icon"),
             weatherItem.hours
         )
+
         // Перезаписываем WeatherModel
         model.liveDataCurrent.value = item
-        Log.d("MyLog", "City: ${item.maxTemp}")
-        Log.d("MyLog", "Time: ${item.minTemp}")
-        Log.d("MyLog", "Time: ${item.hours}")
     }
 
     private fun updateCurrentCard() = with(binding){
