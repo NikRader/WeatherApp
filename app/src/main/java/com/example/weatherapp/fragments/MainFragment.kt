@@ -93,6 +93,8 @@ class MainFragment : Fragment()  {
             )
             list.add(item)
         }
+        // Передаем данные во ViewModel
+        model.liveDataList.value = list
         return list
     }
 

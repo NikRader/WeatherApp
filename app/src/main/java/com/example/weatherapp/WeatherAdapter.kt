@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 
 import com.example.weatherapp.databinding.ListItemBinding
-
+import com.squareup.picasso.Picasso
 
 
 const val API_KEY ="b493d3eeff724b3f9a954927242303"
@@ -20,7 +20,8 @@ class WeatherAdapter : ListAdapter<WeatherModel, WeatherAdapter.Holder>(Comparat
         fun bind(item: WeatherModel) = with(binding){
             tvDate.text = item.time
             tvCondition.text = item.condition
-            tvTemp.text = item.currentTemp
+            tvTemp.text = item.currentTemp.ifEmpty { "${item.minTemp } °С/ ${item.maxTemp } °С" }
+            Picasso.get().load("https:" + item.imageUrl).into(im)
         }
 
 
@@ -39,6 +40,7 @@ class WeatherAdapter : ListAdapter<WeatherModel, WeatherAdapter.Holder>(Comparat
     }
         // Cоздание view-элемента
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
+
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent,false)
             return Holder(view)
     }

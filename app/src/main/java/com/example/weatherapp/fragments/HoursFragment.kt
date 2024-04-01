@@ -13,6 +13,7 @@ import com.example.weatherapp.R
 import com.example.weatherapp.WeatherAdapter
 import com.example.weatherapp.WeatherModel
 import com.example.weatherapp.databinding.FragmentHoursBinding
+import com.squareup.picasso.Picasso
 import org.json.JSONArray
 import org.json.JSONObject
 
