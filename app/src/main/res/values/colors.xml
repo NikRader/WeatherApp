@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="blue_status">#2196F3</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="orange">#FF9800</color>
+    <color name="red">#CC3737</color>
+    <color name="brown">#8C2403</color>
+    <color name="blue">#3D97DF</color>
+    <color name="blue2">#0C82E1</color>
+    <color name="blue3">#084F88</color>
+    <color name="green">#2CD333</color>
+    <color name="green4">#085951</color>
+    <color name="green3">#8EF392</color>
+    <color name="green2">#7BDF7F</color>
 </resources>
