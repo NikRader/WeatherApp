@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.weatherapp.DialogManager
 import com.example.weatherapp.MainViewModel
 import com.example.weatherapp.R
 import com.example.weatherapp.WeatherModel
@@ -39,10 +40,15 @@ class MainFragment : Fragment()  {
         super.onViewCreated(view, savedInstanceState)
         updateCurrentCard()
         requestWeatherData("Mexico")
-
+        binding.searchBtn.setOnClickListener {
+            DialogManager.searchByNameDialog(requireContext(), object: DialogManager.Listener{
+                override fun onClick(name: String?) {
+                    // Передача параметра name в функцию запроса
+                    name?.let { it1 -> requestWeatherData(it1) }
+                }
+            } )
+        }
     }
-
-
 
     private fun requestWeatherData(city: String){
         val url = "https://api.weatherapi.com/v1/forecast.json?key=" +
