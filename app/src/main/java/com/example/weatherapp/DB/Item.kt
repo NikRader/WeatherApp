@@ -4,12 +4,20 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity (tableName = "items")
+@Entity (tableName = "my_weather")
 data class Item (
     @PrimaryKey(autoGenerate = true)
     var id: Int? = null,
-    @ColumnInfo(name = "name")
-    var name: String,
-    @ColumnInfo(name = "price")
-    var price: String,
+    @ColumnInfo(name = "city")
+    var city: String,
+    @ColumnInfo(name = "time")
+    var time: String,
+    @ColumnInfo(name = "condition")
+    var condition: String,
+    @ColumnInfo(name = "currentTemp")
+    var currentTemp: String,
+    @ColumnInfo(name = "maxTemp")
+    var maxTemp: String,
+    @ColumnInfo(name = "minTemp")
+    var minTemp: String,
 )

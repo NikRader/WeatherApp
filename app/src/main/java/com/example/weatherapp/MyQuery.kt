@@ -19,12 +19,16 @@ class MyQuery : AppCompatActivity() {
         db.getDao().getAllItem().asLiveData().observe(this){ list->
             binding.tvList.text = ""
             list.forEach {
-                val text = "Id: ${it.id} Name: ${it.name} Price: ${it.price}\n"
+                val text = "Id: ${it.id} Name: ${it.city} Price: ${it.time}\n"
                 binding.tvList.append(text)
             }
         }
         binding.button2.setOnClickListener {
             val item = Item(null,
+                binding.edName.text.toString(),
+                binding.edPrice.text.toString(),
+                binding.edName.text.toString(),
+                binding.edPrice.text.toString(),
                 binding.edName.text.toString(),
                 binding.edPrice.text.toString()
             )

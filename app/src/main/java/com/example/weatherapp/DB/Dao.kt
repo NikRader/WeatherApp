@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 interface Dao {
     @Insert
     fun insertItem(item: Item)
-    @Query("SELECT * FROM items")
+    @Query("SELECT * FROM my_weather")
     fun getAllItem(): Flow<List<Item>>
 }
