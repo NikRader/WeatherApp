@@ -10,9 +10,10 @@ import androidx.fragment.app.activityViewModels
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import com.example.weatherapp.DB.Item
+import com.example.weatherapp.DB.MainDb
 import com.example.weatherapp.DialogManager
 import com.example.weatherapp.MainViewModel
-import com.example.weatherapp.R
 import com.example.weatherapp.WeatherModel
 
 import com.example.weatherapp.databinding.FragmentMainBinding
@@ -64,6 +65,8 @@ class MainFragment : Fragment()  {
             url,
             {
                     result -> parseWeatherData(result)
+                    Log.d("MyLog", "Data was got!")
+
             },
             {
                     error -> Log.d("MyLog", "Error: $error")
@@ -120,8 +123,23 @@ class MainFragment : Fragment()  {
 
         // Перезаписываем WeatherModel
         model.liveDataCurrent.value = item
-    }
 
+        // ------Делаем запись в БД------------------
+        val db = MainDb.getDb(this)
+        val itembd = Item(null,"","","","","","" )
+        itembd.city        = item.city
+        itembd.time        = item.time
+        itembd.condition   = item.condition
+        itembd.currentTemp = item.currentTemp
+        itembd.minTemp     = item.minTemp
+        itembd.maxTemp     = item.maxTemp
+
+        Thread{
+            db.getDao().insertItem(itembd)
+        }.start()
+
+    }
+        //  Функция для обновления Текущей погоды (CurrentCard)
     private fun updateCurrentCard() = with(binding){
         // Следит за обновлениями фрагмента(функция observe - ждет данные)
         model.liveDataCurrent.observe(viewLifecycleOwner){
@@ -135,6 +153,9 @@ class MainFragment : Fragment()  {
            Picasso.get().load("https:" + it.imageUrl).into(weatherImage)
         }
     }
+
+
+
     companion object {
         @JvmStatic
         fun newInstance() = MainFragment()

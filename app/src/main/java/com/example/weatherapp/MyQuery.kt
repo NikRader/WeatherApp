@@ -15,26 +15,16 @@ class MyQuery : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyQueryBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val db = MainDb.getDb(this)
-        db.getDao().getAllItem().asLiveData().observe(this){ list->
-            binding.tvList.text = ""
-            list.forEach {
-                val text = "Id: ${it.id} Name: ${it.city} Price: ${it.time}\n"
-                binding.tvList.append(text)
-            }
-        }
+      //  val db = MainDb.getDb(this)
+      //  db.getDao().getAllItem().asLiveData().observe(this){ list->
+//            binding.tvList.text = ""
+//            list.forEach {
+//                val text = "Id: ${it.id} Name: ${it.city} Price: ${it.time}\n"
+//                binding.tvList.append(text)
+//            }
+//        }
         binding.button2.setOnClickListener {
-            val item = Item(null,
-                binding.edName.text.toString(),
-                binding.edPrice.text.toString(),
-                binding.edName.text.toString(),
-                binding.edPrice.text.toString(),
-                binding.edName.text.toString(),
-                binding.edPrice.text.toString()
-            )
-            Thread{
-                db.getDao().insertItem(item)
-            }.start()
+//
         }
     }
 }

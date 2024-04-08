@@ -18,11 +18,11 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
-            android:name=".MainActivity"
+            android:name=".MyQuery"
             android:exported="false" />
         <!-- usesCleartextTraffic="true Используем, чтоб не было проблем при http запросах -->
         <activity
-            android:name=".MyQuery"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
