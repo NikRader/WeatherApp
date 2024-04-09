@@ -7,24 +7,27 @@
     android:layout_height="match_parent"
     tools:context=".MyQuery">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rc_view_query"
-        android:layout_width="415dp"
-        android:layout_height="417dp"
-        android:layout_marginTop="71dp"
-        android:layout_marginEnd="1dp"
-        android:background="#DAD5D5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/back_to_main"
         android:layout_width="189dp"
         android:layout_height="69dp"
-        android:layout_marginTop="87dp"
-        android:text="Button"
+        android:layout_marginStart="114dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="87dp"
+        android:text="Назад"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/rc_view_query"
-        app:layout_constraintTop_toBottomOf="@+id/rc_view_query" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvList"
+        android:layout_width="339dp"
+        android:layout_height="499dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="8dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -125,7 +125,8 @@ class MainFragment : Fragment()  {
         model.liveDataCurrent.value = item
 
         // ------Делаем запись в БД------------------
-        val db = MainDb.getDb(this)
+
+
         val itembd = Item(null,"","","","","","" )
         itembd.city        = item.city
         itembd.time        = item.time
@@ -153,8 +154,6 @@ class MainFragment : Fragment()  {
            Picasso.get().load("https:" + it.imageUrl).into(weatherImage)
         }
     }
-
-
 
     companion object {
         @JvmStatic

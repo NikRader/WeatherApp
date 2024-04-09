@@ -1,20 +1,29 @@
 package com.example.weatherapp
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.asLiveData
+import com.example.weatherapp.DB.MainDb
+import com.example.weatherapp.databinding.ActivityMyQueryBinding
+
 
 class MyQuery : AppCompatActivity() {
+    private lateinit var binding: ActivityMyQueryBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_my_query)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+        binding = ActivityMyQueryBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        val db = MainDb.getDb(this)
+        db.getDao().getAllItem().asLiveData().observe(this) { list ->
+            binding.tvList.text = ""
+            list.forEach {
+                val text = "Id: ${it.id} City: ${it.city} Time: ${it.time}" +
+                        " Condition: ${it.condition} Current Temperature: ${it.time}\n"
+                binding.tvList.append(text)
+            }
         }
+
+
     }
 }
