@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-
 import androidx.fragment.app.activityViewModels
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
@@ -15,7 +14,6 @@ import com.example.weatherapp.DB.MainDb
 import com.example.weatherapp.DialogManager
 import com.example.weatherapp.MainViewModel
 import com.example.weatherapp.WeatherModel
-
 import com.example.weatherapp.databinding.FragmentMainBinding
 import com.squareup.picasso.Picasso
 import org.json.JSONObject
@@ -34,13 +32,12 @@ class MainFragment : Fragment()  {
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateCurrentCard()
-        requestWeatherData("Mexico")
+        requestWeatherData("Nizhny Novgorod")
         binding.searchBtn.setOnClickListener {
             DialogManager.searchByNameDialog(requireContext(), object: DialogManager.Listener{
                 override fun onClick(name: String?) {
@@ -57,7 +54,7 @@ class MainFragment : Fragment()  {
                 "&q=" +
                 city +
                 "&days=" +
-                "7" +
+                "3" +     // максимальное кол-во дней сайтом предоставляется: 3
                 "&aqi=no&alerts=no"
         val queue = Volley.newRequestQueue(context)
         val request = StringRequest(
@@ -125,8 +122,7 @@ class MainFragment : Fragment()  {
         model.liveDataCurrent.value = item
 
         // ------Делаем запись в БД------------------
-
-
+        val db = MainDb.getDb(this)
         val itembd = Item(null,"","","","","","" )
         itembd.city        = item.city
         itembd.time        = item.time

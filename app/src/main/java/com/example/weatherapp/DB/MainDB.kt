@@ -1,6 +1,5 @@
 package com.example.weatherapp.DB
 
-import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -11,15 +10,12 @@ abstract class MainDb : RoomDatabase() {
     abstract fun getDao(): Dao
 
     companion object{
-        fun getDb(context: Context): MainDb{
+        fun getDb(context: MainFragment): MainDb{
             return Room.databaseBuilder(
-                context.applicationContext,
+                context.requireContext(),
                 MainDb::class.java,
-                "test.db"
+                "test2.db"
             ).build()
-        }
-
-
         }
     }
 }

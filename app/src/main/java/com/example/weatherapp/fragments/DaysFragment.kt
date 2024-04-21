@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.MainViewModel
+import com.example.weatherapp.R
 import com.example.weatherapp.WeatherAdapter
+import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.weatherapp.databinding.FragmentDaysBinding
 
 
@@ -29,6 +31,7 @@ class DaysFragment : Fragment() {
         model.liveDataList.observe(viewLifecycleOwner){
             adapter.submitList(it)
         }
+
     }
 
     private fun init() = with(binding){
