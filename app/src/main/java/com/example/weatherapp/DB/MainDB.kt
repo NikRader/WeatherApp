@@ -3,6 +3,7 @@ package com.example.weatherapp.DB
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.weatherapp.MyQuery
 import com.example.weatherapp.fragments.MainFragment
 
 @Database (entities = [Item::class], version = 2)
@@ -16,6 +17,10 @@ abstract class MainDb : RoomDatabase() {
                 MainDb::class.java,
                 "test2.db"
             ).build()
+        }
+
+        fun getDb(context: MyQuery): MainDb {
+            TODO("Not yet implemented")
         }
     }
 }

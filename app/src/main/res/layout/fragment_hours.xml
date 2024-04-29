@@ -18,6 +18,8 @@
         android:id="@+id/hours_recycler"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         app:layout_constraintBottom_toBottomOf="@+id/hours"
         app:layout_constraintEnd_toEndOf="@+id/hours"
         app:layout_constraintStart_toStartOf="@+id/hours"

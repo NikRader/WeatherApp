@@ -63,7 +63,6 @@ class MainFragment : Fragment()  {
             {
                     result -> parseWeatherData(result)
                     Log.d("MyLog", "Data was got!")
-
             },
             {
                     error -> Log.d("MyLog", "Error: $error")
@@ -143,7 +142,7 @@ class MainFragment : Fragment()  {
            val maxMinTemp = "${it.minTemp}°C / ${it.maxTemp}°C"
             tvData.text = it.time
             tvCity.text = it.city
-            tvCurrentTemp.text = it.currentTemp
+            tvCurrentTemp.text = "${it.currentTemp} °C"
             tvCondition.text = it.condition
             tvMinMax.text = maxMinTemp
             // Picasso скачает картинку и добавит в ImageView
