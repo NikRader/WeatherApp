@@ -8,12 +8,13 @@
     android:layout_marginTop="3dp"
     android:layout_marginRight="5dp"
     android:backgroundTint="@color/green2"
-    app:cardCornerRadius="5dp"
+    app:cardCornerRadius="10dp"
     app:cardElevation="0dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="1dp">
 
         <TextView
             android:id="@+id/tvDate"

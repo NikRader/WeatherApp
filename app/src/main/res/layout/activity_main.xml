@@ -41,7 +41,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_weight="0.4"
-            android:text="Hours" />
+            android:text="Hours"
+            app:strokeColor="#374FD3"
+            app:strokeWidth="2dp" />
 
         <Button
             android:id="@+id/days_btn"
@@ -49,7 +51,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_weight="0.4"
-            android:text="Days" />
+            android:text="Days"
+            app:strokeColor="#374FD3"
+            app:strokeWidth="2dp" />
     </LinearLayout>
 
     <FrameLayout
@@ -71,13 +75,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#E6D85E"
+        android:backgroundTint="#03A9F4"
         android:text="Show your requests"
-        android:textColor="#FAF8F8"
+        android:textColor="#1A1B1A"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/placeForecast" />
+        app:layout_constraintTop_toBottomOf="@+id/placeForecast"
+        app:layout_constraintVertical_bias="0.666"
+        app:strokeColor="#374FD3"
+        app:strokeWidth="2dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -74,7 +74,7 @@
                 android:layout_marginTop="4dp"
                 android:gravity="center"
                 android:text="Madrid"
-                android:textColor="@color/white"
+                android:textColor="#374FD3"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
