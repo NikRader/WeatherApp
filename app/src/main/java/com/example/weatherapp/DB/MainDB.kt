@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 import com.example.weatherapp.MyQuery
 import com.example.weatherapp.fragments.MainFragment
 
-@Database (entities = [Item::class], version = 2)
+@Database (entities = [Item::class], version = 3)
 abstract class MainDb : RoomDatabase() {
     abstract fun getDao(): Dao
 
@@ -15,12 +15,16 @@ abstract class MainDb : RoomDatabase() {
             return Room.databaseBuilder(
                 context.requireContext(),
                 MainDb::class.java,
-                "test2.db"
+                "test3.db"
             ).build()
         }
 
         fun getDb(context: MyQuery): MainDb {
-            TODO("Not yet implemented")
+            return Room.databaseBuilder(
+                context.applicationContext,
+                MainDb::class.java,
+                "test3.db"
+            ).build()
         }
     }
 }

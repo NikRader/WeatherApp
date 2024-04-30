@@ -1,10 +1,12 @@
 package com.example.weatherapp.fragments
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.android.volley.Request
 import com.android.volley.toolbox.StringRequest
@@ -13,6 +15,7 @@ import com.example.weatherapp.DB.Item
 import com.example.weatherapp.DB.MainDb
 import com.example.weatherapp.DialogManager
 import com.example.weatherapp.MainViewModel
+import com.example.weatherapp.MyQuery
 import com.example.weatherapp.WeatherModel
 import com.example.weatherapp.databinding.FragmentMainBinding
 import com.squareup.picasso.Picasso

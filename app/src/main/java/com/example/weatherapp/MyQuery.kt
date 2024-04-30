@@ -15,17 +15,20 @@ class MyQuery : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyQueryBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
 
+    override fun onStart() {
+        super.onStart()
         val db = MainDb.getDb(this)
-        db.getDao().getAllItem().asLiveData().observe(this){ list->
-            binding.tvList.text = ""
-            list.forEach {
-                val text = "Id: ${it.id} Id: ${it.time} Time: ${it.condition} Current Temp.: ${it.currentTemp} Min Temp.: ${it.minTemp} Max Temp.: ${it.maxTemp} \n"
+        db.getDao().getAllItem().asLiveData().observe(this){
+                binding.tvList.text = ""
+                it.forEach {
+                val text =
+                        "  ${it.id}. ${it.city} Last update: ${it.time} Condition: ${it.condition} Current Temp.: ${it.currentTemp} Min Temp.: ${it.minTemp} Max Temp.: ${it.maxTemp} \n\n"
                 binding.tvList.append(text)
+                }
             }
         }
-        binding.button2.setOnClickListener {
-//
-        }
+
+
     }
-}

@@ -24,8 +24,6 @@ class WeatherAdapter : ListAdapter<WeatherModel, WeatherAdapter.Holder>(Comparat
             tvTemp.text = item.currentTemp.ifEmpty { "${item.minTemp } / ${item.maxTemp } " }
             Picasso.get().load("https:" + item.imageUrl).into(im)
         }
-
-
     }
     // Класс Comparator проверяет, есть ли изменения в новом списке
     // Нужно ли перерисовать
@@ -37,7 +35,6 @@ class WeatherAdapter : ListAdapter<WeatherModel, WeatherAdapter.Holder>(Comparat
         override fun areContentsTheSame(oldItem: WeatherModel, newItem: WeatherModel): Boolean {
             return oldItem == newItem
         }
-
     }
         // Cоздание view-элемента
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {

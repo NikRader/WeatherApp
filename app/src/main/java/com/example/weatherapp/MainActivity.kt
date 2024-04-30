@@ -1,6 +1,8 @@
 package com.example.weatherapp
 
 
+import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -23,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         days_hours_btn()
+        show_requests()
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.placeCurrentCard, MainFragment.newInstance())
@@ -40,6 +43,13 @@ class MainActivity : AppCompatActivity() {
                 .beginTransaction()
                 .replace(R.id.placeForecast, DaysFragment.newInstance())
                 .commit()
+        }
+    }
+
+    private fun show_requests() = with(binding){
+        showReqBtn.setOnClickListener {
+            val intent = Intent(this@MainActivity, MyQuery::class.java)
+            startActivity(intent)
         }
     }
 }

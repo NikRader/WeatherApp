@@ -54,8 +54,8 @@
 
     <FrameLayout
         android:id="@+id/placeForecast"
-        android:layout_width="409dp"
-        android:layout_height="380dp"
+        android:layout_width="403dp"
+        android:layout_height="311dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"
         android:background="@drawable/back2"
@@ -64,5 +64,20 @@
         app:layout_constraintTop_toBottomOf="@+id/conteiner">
 
     </FrameLayout>
+
+    <Button
+        android:id="@+id/show_reqBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#E6D85E"
+        android:text="Show your requests"
+        android:textColor="#FAF8F8"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/placeForecast" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
