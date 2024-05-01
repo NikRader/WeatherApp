@@ -10,6 +10,12 @@ import com.example.weatherapp.databinding.RequestItemBinding
 import com.squareup.picasso.Picasso
 
 class RequestAdapter : ListAdapter<WeatherModel, RequestAdapter.MyHolder>(ComparatorReq()){
+
+    var data: List<WeatherModel> = emptyList()
+        set(newValue) {
+            field = newValue
+            notifyDataSetChanged()
+        }
     class MyHolder(view: View): RecyclerView.ViewHolder(view){
         val binding = RequestItemBinding.bind(view)
 

@@ -23,28 +23,43 @@
 
     <Button
         android:id="@+id/back_to_weaterBtn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="185dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="224dp"
         android:layout_marginBottom="16dp"
         android:text="Back to weater"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:strokeColor="#374FD3"
         app:strokeWidth="2dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/req_rcView"
-        android:layout_width="355dp"
-        android:layout_height="295dp"
-        android:layout_marginTop="24dp"
+    <ListView
+        android:id="@+id/my_list_req"
+        android:layout_width="410dp"
+        android:layout_height="318dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/back_to_weaterBtn"
-        app:layout_constraintEnd_toEndOf="@+id/tvList"
-        app:layout_constraintStart_toStartOf="@+id/tvList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.555"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvList"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.714" />
+
+    <Button
+        android:id="@+id/delete_btn"
+        android:layout_width="152dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="64dp"
+        android:backgroundTint="#C85252"
+        android:text="Delete from DB"
+        app:layout_constraintBottom_toBottomOf="@+id/back_to_weaterBtn"
+        app:layout_constraintStart_toEndOf="@+id/back_to_weaterBtn"
+        app:layout_constraintTop_toTopOf="@+id/back_to_weaterBtn"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
