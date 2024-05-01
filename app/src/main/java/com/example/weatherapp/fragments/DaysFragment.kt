@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.weatherapp.MainViewModel
 import com.example.weatherapp.R
 import com.example.weatherapp.WeatherAdapter
+import com.example.weatherapp.WeatherModel
 import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.weatherapp.databinding.FragmentDaysBinding
 
@@ -38,6 +39,7 @@ class DaysFragment : Fragment() {
         adapter = WeatherAdapter()
         daysRecycler.layoutManager = LinearLayoutManager(activity)
         daysRecycler.adapter = adapter
+
     }
 
     companion object {

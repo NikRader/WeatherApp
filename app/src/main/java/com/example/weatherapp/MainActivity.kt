@@ -2,19 +2,13 @@ package com.example.weatherapp
 
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.android.volley.Request
 
-import com.android.volley.toolbox.StringRequest
-import com.android.volley.toolbox.Volley
 import com.example.weatherapp.databinding.ActivityMainBinding
 import com.example.weatherapp.fragments.DaysFragment
 import com.example.weatherapp.fragments.HoursFragment
 import com.example.weatherapp.fragments.MainFragment
-import org.json.JSONObject
 
 
 class MainActivity : AppCompatActivity() {
@@ -48,7 +42,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun show_requests() = with(binding){
         showReqBtn.setOnClickListener {
-            val intent = Intent(this@MainActivity, MyQuery::class.java)
+            val intent = Intent(this@MainActivity, Requests::class.java)
             startActivity(intent)
         }
     }

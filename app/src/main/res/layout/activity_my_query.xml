@@ -5,12 +5,12 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyQuery">
+    tools:context=".Requests">
 
     <TextView
         android:id="@+id/tvList"
         android:layout_width="352dp"
-        android:layout_height="447dp"
+        android:layout_height="300dp"
         android:layout_marginStart="39dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="28dp"
@@ -38,13 +38,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/req_rcView"
-        android:layout_width="352dp"
-        android:layout_height="170dp"
+        android:layout_width="355dp"
+        android:layout_height="295dp"
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toTopOf="@+id/back_to_weaterBtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.525"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvList"
+        app:layout_constraintStart_toStartOf="@+id/tvList"
         app:layout_constraintTop_toBottomOf="@+id/tvList"
         app:layout_constraintVertical_bias="0.0" />
 

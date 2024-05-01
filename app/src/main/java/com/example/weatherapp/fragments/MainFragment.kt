@@ -1,6 +1,4 @@
 package com.example.weatherapp.fragments
-import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -15,7 +13,6 @@ import com.example.weatherapp.DB.Item
 import com.example.weatherapp.DB.MainDb
 import com.example.weatherapp.DialogManager
 import com.example.weatherapp.MainViewModel
-import com.example.weatherapp.MyQuery
 import com.example.weatherapp.WeatherModel
 import com.example.weatherapp.databinding.FragmentMainBinding
 import com.squareup.picasso.Picasso

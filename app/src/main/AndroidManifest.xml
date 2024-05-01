@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="33">
         <activity
-            android:name=".MyQuery"
+            android:name=".Requests"
             android:exported="false" />
         <!-- usesCleartextTraffic="true Используем, чтоб не было проблем при http запросах -->
         <activity

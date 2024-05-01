@@ -14,9 +14,12 @@ class RequestAdapter : ListAdapter<WeatherModel, RequestAdapter.MyHolder>(Compar
         val binding = RequestItemBinding.bind(view)
 
         fun bind(item: WeatherModel) =  with(binding){
+            cityReq.text = item.city
             dateReq.text = item.time
             conditionReq.text = item.condition
             tempReq.text = item.currentTemp
+            minTempReq.text = item.minTemp
+            maxTempReq.text = item.maxTemp
             Picasso.get().load("https:" + item.imageUrl).into(imReq)
            // To Do add data in item_card (в разметку!)
         }
@@ -30,8 +33,6 @@ class RequestAdapter : ListAdapter<WeatherModel, RequestAdapter.MyHolder>(Compar
         override fun areContentsTheSame(oldItem: WeatherModel, newItem: WeatherModel): Boolean {
             return oldItem == newItem
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {

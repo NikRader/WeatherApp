@@ -9,7 +9,7 @@ import com.example.weatherapp.DB.MainDb
 import com.example.weatherapp.databinding.ActivityMyQueryBinding
 
 
-class MyQuery : AppCompatActivity() {
+class Requests : AppCompatActivity() {
     lateinit var binding: ActivityMyQueryBinding
     private lateinit var adapter: RequestAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +24,7 @@ class MyQuery : AppCompatActivity() {
         init_btn()
         val db = MainDb.getDb(this)
         db.getDao().getAllItem().asLiveData().observe(this){
-           // val list_req =
+
                 binding.tvList.text = ""
                 it.forEach {
                 val text =
@@ -38,14 +38,26 @@ class MyQuery : AppCompatActivity() {
     private fun initRcView() = with(binding){
         // Разметка для RcView может быть разной, как вертикальной,
         // Так и горизонатальной.  LinearLayoutManager по умолчанию создает вертик.
-        reqRcView.layoutManager = LinearLayoutManager(this@MyQuery)
+        reqRcView.layoutManager = LinearLayoutManager(this@Requests)
         adapter = RequestAdapter()
         reqRcView.adapter = adapter
+        val list = listOf(
+            WeatherModel(
+                "London","30.04.2024","cloudy", "25.0","30","20","",""
+            ),
+            WeatherModel(
+                "Rome","30.04.2024","sunny", "23.0","28","18","",""
+            ),
+            WeatherModel(
+                "Madrid","30.04.2024","rainy", "21.0","25","16","",""
+            )
+        )
+        adapter.submitList(list)
     }
 
     private fun init_btn(){
         binding.backToWeaterBtn.setOnClickListener {
-            val intent = Intent(this@MyQuery, MainActivity::class.java)
+            val intent = Intent(this@Requests, MainActivity::class.java)
             startActivity(intent)
         }
     }
