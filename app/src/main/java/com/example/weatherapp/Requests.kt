@@ -70,7 +70,7 @@ class Requests : AppCompatActivity() {
         }
         binding.deleteBtn.setOnClickListener {
             val db = MainDb.getDb(this)
-            db.getDao().deleteAllItem()
+         //   db.getDao().deleteAllItem()
         }
     }
 }
