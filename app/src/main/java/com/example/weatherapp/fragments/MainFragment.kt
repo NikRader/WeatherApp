@@ -1,4 +1,5 @@
 package com.example.weatherapp.fragments
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import com.example.weatherapp.DB.Item
 import com.example.weatherapp.DB.MainDb
 import com.example.weatherapp.DialogManager
 import com.example.weatherapp.MainViewModel
+import com.example.weatherapp.R
 import com.example.weatherapp.WeatherModel
 import com.example.weatherapp.databinding.FragmentMainBinding
 import com.squareup.picasso.Picasso
@@ -26,6 +28,9 @@ class MainFragment : Fragment()  {
     private lateinit var binding: FragmentMainBinding
     private val model: MainViewModel by activityViewModels()
 
+   // private val sunny_sound: MediaPlayer = MediaPlayer.create(activity, R.raw.sunny_sound)
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,7 +42,8 @@ class MainFragment : Fragment()  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         updateCurrentCard()
-        requestWeatherData("Nizhny Novgorod")
+
+        requestWeatherData("London")
         binding.searchBtn.setOnClickListener {
             DialogManager.searchByNameDialog(requireContext(), object: DialogManager.Listener{
                 override fun onClick(name: String?) {
@@ -45,7 +51,9 @@ class MainFragment : Fragment()  {
                     name?.let { it1 -> requestWeatherData(it1) }
                 }
             } )
+
         }
+       // soundPlay(sunny_sound)
     }
 
     private fun requestWeatherData(city: String){
@@ -148,6 +156,10 @@ class MainFragment : Fragment()  {
             // Picasso скачает картинку и добавит в ImageView
            Picasso.get().load("https:" + it.imageUrl).into(weatherImage)
         }
+    }
+
+    fun soundPlay(sunny_sound: MediaPlayer) {
+      //  soundPlay(this.sunny_sound)
     }
 
     companion object {
