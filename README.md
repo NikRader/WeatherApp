@@ -1,5 +1,17 @@
-Weather App let you know information about weather from all over the world!
+# WeatherApp - Приложение для получения данных о погоде в любой точке мира!
 
-Link for watching in YouTube:
+Приложение отображает данные о погоде, полученную с API.
+Для работы с сетью используется библиотека Volley.
+
+
+# Стек технологий
+- [Язык: kotlin]()
+- [Работа с сетью: Volley]()
+- [База данных: Room]()
+- [Архитектура: MVVM]()
+- [Асинхронность: Coroutines]()
+
+ # Демонстрация приложения
+
 
 https://youtu.be/NGvqfS3Bvg8
